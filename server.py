@@ -1,6 +1,7 @@
 import socket
 from threading import Thread
 from hashlib import md5	
+import sys
 
 LISTENING_PORT = 4325
 unamePass = {}
@@ -34,9 +35,12 @@ def register_user(uname, password):
 	file = open('users.dat', 'rb+')
 	file.seek(-1, 2)
 	file.truncate()
-	m = md5(password.encode("utf-8"))
+	m = md5(bytes(password,"utf-8"))
 	unamePass[uname] = m.hexdigest()
-	file.write(', "' + uname + '":"' + unamePass[uname] + '"}')
+	if unamePass:
+		file.write(b', "' + bytes(uname,"utf-8") + b'":"' + bytes(unamePass[uname],"utf-8")  + b'"}')
+	else:
+		file.write(b'"' + bytes(uname,"utf-8") + b'":"' + bytes(unamePass[uname],"utf-8")  + b'"}')
 	file.close()
 
 
