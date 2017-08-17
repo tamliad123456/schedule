@@ -16,20 +16,20 @@ def proccess_socket(partner_socket):
 	try:
 		partner_socket.send(b'connected')
 		temp = (str(partner_socket.recv(8192),"utf-8").split(","))
-		if temp[0] not in unamePass:
-			if temp[3] = '1':
+		if temp[0] not in unamePass:  #checking if the username does not exist.
+			if temp[3] = '1':  #checking if the user want to register.
 				unamePass[temp[0]] = temp[1]
-				partner_socket.send(b'Registered succefully!')
+				send_data('Registered succefully!', partner_socket)
 			else:
-				partner_socket.send(b'Username does not exist.')
-		else:
-			if temp[3] = '1':
-				partner_socket.send(b'Username already exist.')
+				send_data('Username does not exist.', partner_socket)
+		else:  #the username exist
+			if temp[3] = '1':  #the user want to register
+				send_data('Username already exist.', partner_socket)
 			else:
-				if temp[1] == unamePass[temp[0]]:
-					partner_socket.send(b'Connected succefully!')
-				else:
-					partner_socket.send(b'Password and username does not match.')
+				if temp[1] == unamePass[temp[0]]:  #checking if the password is equals to the password that sent.
+					send_data('Connected succefully!', partner_socket)
+				else:  #the password is wrong.
+					send_data('Password and username does not match.', partner_socket)
 
 		print(unamePass)
 	except Exception as e:
