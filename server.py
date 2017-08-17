@@ -21,6 +21,7 @@ def proccess_socket(partner_socket):
 	try:
 		partner_socket.send(b'connected')
 		temp = (str(partner_socket.recv(8192),"utf-8").split(","))
+		print('message: ' + str(temp))
 		if temp[0] not in unamePass:  #checking if the username does not exist.
 			if temp[2] == '1':  #checking if the user want to register.
 				unamePass[temp[0]] = temp[1]
