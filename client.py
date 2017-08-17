@@ -9,6 +9,7 @@ SERVER_IP = '127.0.0.1'
 BUFFER_SIZE = 8192
 
 def send_data(string_to_send,socket):
+	'''The function sending the string to the server'''
 	socket.send(bytes(string_to_send,"utf-8"))
 
 
