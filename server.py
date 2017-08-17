@@ -7,6 +7,7 @@ unamePass = {}
 def send_data(string_to_send,socket):
 	socket.send(bytes(string_to_send))
 
+
 def main():
 	listening_socket = socket.socket()
 	listening_socket.bind(('0.0.0.0', LISTENING_PORT))
@@ -15,6 +16,10 @@ def main():
 		partner_socket, partner_addr = listening_socket.accept()
 		t1 = Thread(target = proccess_socket, args = (partner_socket,))
 		t1.start()
+
+def send_data(string_to_send,socket):
+	'''The function sending the string to the client'''
+	socket.send(bytes(string_to_send,"utf-8"))
 
 def proccess_socket(partner_socket):
 	try:
