@@ -20,7 +20,6 @@ def main():
 	#toaster = ToastNotifier()
 	client_socket = socket.socket()
 	try:
-		#test
 		client_socket.connect((SERVER_IP, SERVER_PORT))#onnect to the server and get the connection status
 		ans = client_socket.recv(BUFFER_SIZE)
 		#t1 = Thread(target = toaster.show_toast, args = (str(ans),))
