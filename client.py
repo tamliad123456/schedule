@@ -15,7 +15,6 @@ def main():
 		password = sys.argv[2]
 		register = sys.argv[3]
 	except:
-		#tamir
 		print('Open the program in this formula:')
 		print('program username password register(1 or 0)')
 		exit()
