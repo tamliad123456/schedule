@@ -16,12 +16,17 @@ def check_connected_status(ans):
 	'''The function checking the connection status and printing it'''
 	if ans == "Registered succefully!":
 		print("Registered and connected")
+		return True
 	elif ans == "Username does not exist." or ans == "Password and username does not match.":
 		print("connected unsuccefully username or password is wrong")
+		return False
 	elif ans == "Username already exist.":
 		print("username exists try to remember your password")
+		return False
 	else:
 		print("connected sucssesfully")
+		return True
+
 
 
 def main():
@@ -43,7 +48,9 @@ def main():
 		print(ans)
 		send_data(uname + "," + password + "," + register ,client_socket) #sending the informaton about the user
 		ans = client_socket.recv(BUFFER_SIZE)
-		check_connected_status(str(ans,"utf-8"))
+		if not check_connected_status(str(ans,"utf-8")):
+			client_socket.close()
+			exit()
 		while True:
 			pass
 	except Exception as e:
