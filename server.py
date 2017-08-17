@@ -3,6 +3,10 @@ from threading import Thread
 
 LISTENING_PORT = 4325
 unamePass = {}
+
+def send_data(string_to_send,socket):
+	socket.send(bytes(string_to_send))
+
 def main():
 	listening_socket = socket.socket()
 	listening_socket.bind(('0.0.0.0', LISTENING_PORT))
