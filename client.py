@@ -13,6 +13,17 @@ def send_data(string_to_send,socket):
 	socket.send(bytes(string_to_send,"utf-8"))
 
 
+def check_connected status(ans):
+	if ans == "Registered succefully!":
+		print("Registered and connected")
+	elif ans == "Username does not exist." or ans == "Password and username does not match.":
+		print("connected unsuccefully username or password is wrong")
+	elif ans == "Username already exist.":
+		print("username exists try to remember your password")
+	else:
+		print("connected sucssesfully")
+
+
 def main():
 	try:
 		uname = sys.argv[1] #get username from the user via args
@@ -31,10 +42,13 @@ def main():
 		#t1.start()
 		print(ans)
 		send_data(uname + "," + password + "," + register ,client_socket) #sending the informaton about the user
+		ans = client_socket.recv(BUFFER_SIZE)
+		check_connected(ans)
 		while True:
 			pass
 	except Exception as e:
 		print(e)
+
 
 
 
