@@ -12,7 +12,6 @@ def send_data(string_to_send,socket):
 	'''The function sending the string to the server'''
 	socket.send(bytes(string_to_send,"utf-8"))
 
-
 def check_connected_status(ans):
 	'''The function checking the connection status and printing it'''
 	if ans == "Registered succefully!":
