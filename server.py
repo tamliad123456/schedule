@@ -37,9 +37,9 @@ def register_user(uname, password):
 	file.truncate()
 	m = md5(bytes(password,"utf-8"))
 	unamePass[uname] = m.hexdigest()
-	if unamePass:
+	if len(unamePass.keys()) > 1:  #not the first username
 		file.write(b', "' + bytes(uname,"utf-8") + b'":"' + bytes(unamePass[uname],"utf-8")  + b'"}')
-	else:
+	else:  #the first username
 		file.write(b'"' + bytes(uname,"utf-8") + b'":"' + bytes(unamePass[uname],"utf-8")  + b'"}')
 	file.close()
 
