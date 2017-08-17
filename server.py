@@ -34,7 +34,7 @@ def register_user(uname, password):
 	file = open('users.dat', 'rb+')
 	file.seek(-1, 2)
 	file.truncate()
-	m = md5(str(password, 'unicode'))
+	m = md5(password.encode("utf-8"))
 	unamePass[uname] = m.hexdigest()
 	file.write(', "' + uname + '":"' + unamePass[uname] + '"}')
 	file.close()
