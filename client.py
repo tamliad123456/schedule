@@ -44,7 +44,7 @@ def main():
 		print(ans)
 		send_data(uname + "," + password + "," + register ,client_socket) #sending the informaton about the user
 		ans = client_socket.recv(BUFFER_SIZE)
-		check_connected(ans)
+		check_connected_status(ans)
 		while True:
 			pass
 	except Exception as e:
