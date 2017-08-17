@@ -24,7 +24,7 @@ def main():
 	#toaster = ToastNotifier()
 	client_socket = socket.socket()
 	try:
-		client_socket.connect((SERVER_IP, SERVER_PORT)) #connect to the server and get the connection status
+		client_socket.connect((SERVER_IP, SERVER_PORT))  #connect to the server and get the connection status
 		ans = client_socket.recv(BUFFER_SIZE)
 		#t1 = Thread(target = toaster.show_toast, args = (str(ans),))
 		#t1.start()
