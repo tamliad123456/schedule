@@ -22,13 +22,13 @@ def proccess_socket(partner_socket):
 		partner_socket.send(b'connected')
 		temp = (str(partner_socket.recv(8192),"utf-8").split(","))
 		if temp[0] not in unamePass:  #checking if the username does not exist.
-			if temp[3] == '1':  #checking if the user want to register.
+			if temp[2] == '1':  #checking if the user want to register.
 				unamePass[temp[0]] = temp[1]
 				send_data('Registered succefully!', partner_socket)
 			else:
 				send_data('Username does not exist.', partner_socket)
 		else:  #the username exist
-			if temp[3] == '1':  #the user want to register
+			if temp[2] == '1':  #the user want to register
 				send_data('Username already exist.', partner_socket)
 			else:
 				if temp[1] == unamePass[temp[0]]:  #checking if the password is equals to the password that sent.
