@@ -8,12 +8,11 @@ SERVER_PORT = 4325
 SERVER_IP = '127.0.0.1'
 BUFFER_SIZE = 8192
 
-#check
 def main():
 	try:
-		uname = sys.argv[1]
-		password = sys.argv[2]
-		register = sys.argv[3]
+		uname = sys.argv[1] #get username from the user via args
+		password = sys.argv[2] #get the password from the user via args
+		register = sys.argv[3] #get if you are already registered or not via args
 	except:
 		print('Open the program in this formula:')
 		print('program username password register(1 or 0)')
@@ -21,12 +20,12 @@ def main():
 	#toaster = ToastNotifier()
 	client_socket = socket.socket()
 	try:
-		client_socket.connect((SERVER_IP, SERVER_PORT))
+		client_socket.connect((SERVER_IP, SERVER_PORT))#onnect to the server and get the connection status
 		ans = client_socket.recv(BUFFER_SIZE)
 		#t1 = Thread(target = toaster.show_toast, args = (str(ans),))
 		#t1.start()
 		print(ans)
-		client_socket.sendall(bytes(uname,"utf-8") + b"," + bytes(password,"utf-8") + b"," + bytes(register,"utf-8"))
+		client_socket.sendall(bytes(uname,"utf-8") + b"," + bytes(password,"utf-8") + b"," + bytes(register,"utf-8"))#sending the informaton about the user
 		while True:
 			pass
 	except Exception as e:
