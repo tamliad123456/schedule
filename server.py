@@ -46,7 +46,7 @@ def register_user(uname, password):
 	#m = md5(bytes(password,"utf-8"))
 	unamePass[uname] = hashing_creator_md5(password)
 	if len(unamePass.keys()) > 1:  #not the first username
-		file.write(b', "' + bytes(uname,"utf-8") + b'":"' + bytes(unamePass[uname],"utf-8")  + b'"}')
+		file.write(b',"' + bytes(uname,"utf-8") + b'":"' + bytes(unamePass[uname],"utf-8")  + b'"}')
 	else:  #the first username
 		file.write(b'"' + bytes(uname,"utf-8") + b'":"' + bytes(unamePass[uname],"utf-8")  + b'"}')
 	file.close()
