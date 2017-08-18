@@ -71,8 +71,7 @@ def proccess_socket(partner_socket):
 					send_data('Connected succefully!', partner_socket)
 				else:  #the password is wrong.
 					send_data('Password and username does not match.', partner_socket)
-
-		print(unamePass)
+					
 	except Exception as e:
 		print(e)
 
