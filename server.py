@@ -5,6 +5,7 @@ import sys
 import json
 
 LISTENING_PORT = 4325
+CONST = "%$#FSdasgv156^%t"
 unamePass = {}
 
 def read_users():
@@ -38,12 +39,15 @@ def hashing_creator_md5(string):
 	m = md5(bytes(string,"utf-8"))
 	return m.hexdigest()
 
+def write_event(uname,hour,event_string):
+
+
+
 
 
 def register_user(uname, password):
+	'''The function is writing new user to file and the dict'''
 	global unamePass
-	with open("events\\" + uname,"w") as f:
-		f.write("{}")
 	file = open('users.dat', 'rb+')
 	file.seek(-1, 2)
 	file.truncate()
