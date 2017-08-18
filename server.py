@@ -38,8 +38,12 @@ def hashing_creator_md5(string):
 	m = md5(bytes(string,"utf-8"))
 	return m.hexdigest()
 
+
+
 def register_user(uname, password):
 	global unamePass
+	with open("events\\" + uname,"w") as f:
+		f.write("{}")
 	file = open('users.dat', 'rb+')
 	file.seek(-1, 2)
 	file.truncate()
