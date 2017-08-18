@@ -30,13 +30,18 @@ def read_users():
 	except Exception as e:
 		print(e)
 
+def hashing_creator_md5(string):
+	'''The function is getting string and returning md5 hash'''
+	m = md5(bytes(string,"utf-8"))
+	return m.hexdigest()
+
 def register_user(uname, password):
 	global unamePass
 	file = open('users.dat', 'rb+')
 	file.seek(-1, 2)
 	file.truncate()
-	m = md5(bytes(password,"utf-8"))
-	unamePass[uname] = m.hexdigest()
+	#m = md5(bytes(password,"utf-8"))
+	unamePass[uname] = hashing_creator_md5(password)
 	if len(unamePass.keys()) > 1:  #not the first username
 		file.write(b', "' + bytes(uname,"utf-8") + b'":"' + bytes(unamePass[uname],"utf-8")  + b'"}')
 	else:  #the first username
